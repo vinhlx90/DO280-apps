@@ -1,0 +1,3 @@
+#!/bin/bash
+oc set volume deployment/postgresql-persistent --add --name postgresql-storage --type pvc --claim-mode rwo --claim-size 2Gi \
+--claim-name postgresql-storage --mount-path /var/lib/pgsql
