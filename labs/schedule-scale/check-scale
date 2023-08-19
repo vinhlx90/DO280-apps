@@ -1,0 +1,4 @@
+#!/bin/bash
+if $(oc get route/hello -n schedule-scale -o jsonpath='{.spec.host}' &> /dev/null); then
+  ROUTE=$(oc get route/hello -n schedule-scale -o jsonpath='{.spec.host}')
+  (for x in {1..100}; do curl -s http://${ROUTE}; done) | sort | uniq -c
