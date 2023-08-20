@@ -1,0 +1,9 @@
+apiVersion: config.openshift.io/v1
+kind: OAuth
+metadata:
+  creationTimestamp: "2022-07-28T16:11:32Z"
+  generation: 12
+  name: cluster
+  resourceVersion: "477890"
+  uid: 5177eecf-0fcf-48c0-b0cb-e2e3e7bd5f64
+spec: {}
