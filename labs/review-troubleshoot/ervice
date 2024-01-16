@@ -1,0 +1,99 @@
+Name:         wordpress-74599b4b7d-mtbqd
+Namespace:    review-troubleshoot
+Priority:     0
+Node:         master01/192.168.50.10
+Start Time:   Tue, 16 Jan 2024 11:38:49 -0500
+Labels:       deployment=wordpress
+              pod-template-hash=74599b4b7d
+Annotations:  k8s.v1.cni.cncf.io/network-status:
+                [{
+                    "name": "openshift-sdn",
+                    "interface": "eth0",
+                    "ips": [
+                        "10.9.0.47"
+                    ],
+                    "default": true,
+                    "dns": {}
+                }]
+              k8s.v1.cni.cncf.io/networks-status:
+                [{
+                    "name": "openshift-sdn",
+                    "interface": "eth0",
+                    "ips": [
+                        "10.9.0.47"
+                    ],
+                    "default": true,
+                    "dns": {}
+                }]
+              openshift.io/generated-by: OpenShiftNewApp
+              openshift.io/scc: restricted
+Status:       Running
+IP:           10.9.0.47
+IPs:
+  IP:           10.9.0.47
+Controlled By:  ReplicaSet/wordpress-74599b4b7d
+Containers:
+  wordpress:
+    Container ID:   cri-o://00dfb43e8ae89c19ba016b83d2b4bd869ff0ef67c4c70223a07cff75212c507c
+    Image:          quay.io/redhattraining/wordpress@sha256:0cf952b01efd71e94c82c7e4d1c4d4daf9276fb60a9696b2113a9f701c1ecc6b
+    Image ID:       quay.io/redhattraining/wordpress@sha256:0cf952b01efd71e94c82c7e4d1c4d4daf9276fb60a9696b2113a9f701c1ecc6b
+    Port:           80/TCP
+    Host Port:      0/TCP
+    State:          Terminated
+      Reason:       Error
+      Exit Code:    1
+      Started:      Tue, 16 Jan 2024 11:41:47 -0500
+      Finished:     Tue, 16 Jan 2024 11:41:48 -0500
+    Last State:     Terminated
+      Reason:       Error
+      Exit Code:    1
+      Started:      Tue, 16 Jan 2024 11:40:25 -0500
+      Finished:     Tue, 16 Jan 2024 11:40:26 -0500
+    Ready:          False
+    Restart Count:  5
+    Environment:
+      WORDPRESS_DB_HOST:      mysql
+      WORDPRESS_DB_NAME:      wordpress
+      WORDPRESS_DB_USER:      root
+      WORDPRESS_EMAIL:        student@redhat.com
+      WORDPRESS_PASSWORD:     wppass
+      WORDPRESS_TITLE:        review-troubleshoot
+      WORDPRESS_URL:          wordpress.apps.ocp4.example.com
+      WORDPRESS_USER:         wpuser
+      WORDPRESS_DBPASSWORD:   <set to the key 'password' in secret 'mysql'>  Optional: false
+      WORDPRESS_DB_PASSWORD:  <set to the key 'password' in secret 'mysql'>  Optional: false
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-lhkg2 (ro)
+      /var/www/html from wordpress-volume-1 (rw)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             False 
+  ContainersReady   False 
+  PodScheduled      True 
+Volumes:
+  wordpress-volume-1:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  kube-api-access-lhkg2:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+    ConfigMapName:           openshift-service-ca.crt
+    ConfigMapOptional:       <nil>
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason          Age                   From               Message
+  ----     ------          ----                  ----               -------
+  Normal   Scheduled       3m6s                  default-scheduler  Successfully assigned review-troubleshoot/wordpress-74599b4b7d-mtbqd to master01
+  Normal   AddedInterface  3m4s                  multus             Add eth0 [10.9.0.47/23] from openshift-sdn
+  Normal   Pulled          91s (x5 over 3m4s)    kubelet            Container image "quay.io/redhattraining/wordpress@sha256:0cf952b01efd71e94c82c7e4d1c4d4daf9276fb60a9696b2113a9f701c1ecc6b" already present on machine
+  Normal   Created         90s (x5 over 3m4s)    kubelet            Created container wordpress
+  Normal   Started         90s (x5 over 3m4s)    kubelet            Started container wordpress
+  Warning  BackOff         50s (x10 over 2m54s)  kubelet            Back-off restarting failed container
